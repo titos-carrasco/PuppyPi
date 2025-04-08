@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>html.parser API documentation</title>
+<meta name="description" content="A parser for HTML and XHTML.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>html.parser</code></h1>
+</header>
+<section id="section-intro">
+<p>A parser for HTML and XHTML.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="html.parser.HTMLParser"><code class="flex name class">
+<span>class <span class="ident">HTMLParser</span></span>
+<span>(</span><span>*, convert_charrefs=True)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HTMLParser(_markupbase.ParserBase):
+    &#34;&#34;&#34;Find tags and other markup and call handler functions.
+
+    Usage:
+        p = HTMLParser()
+        p.feed(data)
+        ...
+        p.close()
+
+    Start tags are handled by calling self.handle_starttag() or
+    self.handle_startendtag(); end tags by self.handle_endtag().  The
+    data between tags is passed from the parser to the derived class
+    by calling self.handle_data() with the data as argument (the data
+    may be split up in arbitrary chunks).  If convert_charrefs is
+    True the character references are converted automatically to the
+    corresponding Unicode character (and self.handle_data() is no
+    longer split in chunks), otherwise they are passed by calling
+    self.handle_entityref() or self.handle_charref() with the string
+    containing respectively the named or numeric reference as the
+    argument.
+    &#34;&#34;&#34;
+
+    CDATA_CONTENT_ELEMENTS = (&#34;script&#34;, &#34;style&#34;)
+
+    def __init__(self, *, convert_charrefs=True):
+        &#34;&#34;&#34;Initialize and reset this instance.
+
+        If convert_charrefs is True (the default), all character references
+        are automatically converted to the corresponding Unicode characters.
+        &#34;&#34;&#34;
+        super().__init__()
+        self.convert_charrefs = convert_charrefs
+        self.reset()
+
+    def reset(self):
+        &#34;&#34;&#34;Reset this instance.  Loses all unprocessed data.&#34;&#34;&#34;
+        self.rawdata = &#39;&#39;
+        self.lasttag = &#39;???&#39;
+        self.interesting = interesting_normal
+        self.cdata_elem = None
+        super().reset()
+
+    def feed(self, data):
+        r&#34;&#34;&#34;Feed data to the parser.
+
+        Call this as often as you want, with as little or as much text
+        as you want (may include &#39;\n&#39;).
+        &#34;&#34;&#34;
+        self.rawdata = self.rawdata + data
+        self.goahead(0)
+
+    def close(self):
+        &#34;&#34;&#34;Handle any buffered data.&#34;&#34;&#34;
+        self.goahead(1)
+
+    __starttag_text = None
+
+    def get_starttag_text(self):
+        &#34;&#34;&#34;Return full source of start tag: &#39;&lt;...&gt;&#39;.&#34;&#34;&#34;
+        return self.__starttag_text
+
+    def set_cdata_mode(self, elem):
+        self.cdata_elem = elem.lower()
+        self.interesting = re.compile(r&#39;&lt;/\s*%s\s*&gt;&#39; % self.cdata_elem, re.I)
+
+    def clear_cdata_mode(self):
+        self.interesting = interesting_normal
+        self.cdata_elem = None
+
+    # Internal -- handle data as far as reasonable.  May leave state
+    # and data to be processed by a subsequent call.  If &#39;end&#39; is
+    # true, force handling all data as if followed by EOF marker.
+    def goahead(self, end):
+        rawdata = self.rawdata
+        i = 0
+        n = len(rawdata)
+        while i &lt; n:
+            if self.convert_charrefs and not self.cdata_elem:
+                j = rawdata.find(&#39;&lt;&#39;, i)
+                if j &lt; 0:
+                    # if we can&#39;t find the next &lt;, either we are at the end
+                    # or there&#39;s more text incoming.  If the latter is True,
+                    # we can&#39;t pass the text to handle_data in case we have
+                    # a charref cut in half at end.  Try to determine if
+                    # this is the case before proceeding by looking for an
+                    # &amp; near the end and see if it&#39;s followed by a space or ;.
+                    amppos = rawdata.rfind(&#39;&amp;&#39;, max(i, n-34))
+                    if (amppos &gt;= 0 and
+                        not re.compile(r&#39;[\s;]&#39;).search(rawdata, amppos)):
+                        break  # wait till we get all the text
+                    j = n
+            else:
+                match = self.interesting.search(rawdata, i)  # &lt; or &amp;
+                if match:
+                    j = match.start()
+                else:
+                    if self.cdata_elem:
+                        break
+                    j = n
+            if i &lt; j:
+                if self.convert_charrefs and not self.cdata_elem:
+                    self.handle_data(unescape(rawdata[i:j]))
+                else:
+                    self.handle_data(rawdata[i:j])
+            i = self.updatepos(i, j)
+            if i == n: break
+            startswith = rawdata.startswith
+            if startswith(&#39;&lt;&#39;, i):
+                if starttagopen.match(rawdata, i): # &lt; + letter
+                    k = self.parse_starttag(i)
+                elif startswith(&#34;&lt;/&#34;, i):
+                    k = self.parse_endtag(i)
+                elif startswith(&#34;&lt;!--&#34;, i):
+                    k = self.parse_comment(i)
+                elif startswith(&#34;&lt;?&#34;, i):
+                    k = self.parse_pi(i)
+                elif startswith(&#34;&lt;!&#34;, i):
+                    k = self.parse_html_declaration(i)
+                elif (i + 1) &lt; n:
+                    self.handle_data(&#34;&lt;&#34;)
+                    k = i + 1
+                else:
+                    break
+                if k &lt; 0:
+                    if not end:
+                        break
+                    k = rawdata.find(&#39;&gt;&#39;, i + 1)
+                    if k &lt; 0:
+                        k = rawdata.find(&#39;&lt;&#39;, i + 1)
+                        if k &lt; 0:
+                            k = i + 1
+                    else:
+                        k += 1
+                    if self.convert_charrefs and not self.cdata_elem:
+                        self.handle_data(unescape(rawdata[i:k]))
+                    else:
+                        self.handle_data(rawdata[i:k])
+                i = self.updatepos(i, k)
+            elif startswith(&#34;&amp;#&#34;, i):
+                match = charref.match(rawdata, i)
+                if match:
+                    name = match.group()[2:-1]
+                    self.handle_charref(name)
+                    k = match.end()
+                    if not startswith(&#39;;&#39;, k-1):
+                        k = k - 1
+                    i = self.updatepos(i, k)
+                    continue
+                else:
+                    if &#34;;&#34; in rawdata[i:]:  # bail by consuming &amp;#
+                        self.handle_data(rawdata[i:i+2])
+                        i = self.updatepos(i, i+2)
+                    break
+            elif startswith(&#39;&amp;&#39;, i):
+                match = entityref.match(rawdata, i)
+                if match:
+                    name = match.group(1)
+                    self.handle_entityref(name)
+                    k = match.end()
+                    if not startswith(&#39;;&#39;, k-1):
+                        k = k - 1
+                    i = self.updatepos(i, k)
+                    continue
+                match = incomplete.match(rawdata, i)
+                if match:
+                    # match.group() will contain at least 2 chars
+                    if end and match.group() == rawdata[i:]:
+                        k = match.end()
+                        if k &lt;= i:
+                            k = n
+                        i = self.updatepos(i, i + 1)
+                    # incomplete
+                    break
+                elif (i + 1) &lt; n:
+                    # not the end of the buffer, and can&#39;t be confused
+                    # with some other construct
+                    self.handle_data(&#34;&amp;&#34;)
+                    i = self.updatepos(i, i + 1)
+                else:
+                    break
+            else:
+                assert 0, &#34;interesting.search() lied&#34;
+        # end while
+        if end and i &lt; n and not self.cdata_elem:
+            if self.convert_charrefs and not self.cdata_elem:
+                self.handle_data(unescape(rawdata[i:n]))
+            else:
+                self.handle_data(rawdata[i:n])
+            i = self.updatepos(i, n)
+        self.rawdata = rawdata[i:]
+
+    # Internal -- parse html declarations, return length or -1 if not terminated
+    # See w3.org/TR/html5/tokenization.html#markup-declaration-open-state
+    # See also parse_declaration in _markupbase
+    def parse_html_declaration(self, i):
+        rawdata = self.rawdata
+        assert rawdata[i:i+2] == &#39;&lt;!&#39;, (&#39;unexpected call to &#39;
+                                        &#39;parse_html_declaration()&#39;)
+        if rawdata[i:i+4] == &#39;&lt;!--&#39;:
+            # this case is actually already handled in goahead()
+            return self.parse_comment(i)
+        elif rawdata[i:i+3] == &#39;&lt;![&#39;:
+            return self.parse_marked_section(i)
+        elif rawdata[i:i+9].lower() == &#39;&lt;!doctype&#39;:
+            # find the closing &gt;
+            gtpos = rawdata.find(&#39;&gt;&#39;, i+9)
+            if gtpos == -1:
+                return -1
+            self.handle_decl(rawdata[i+2:gtpos])
+            return gtpos+1
+        else:
+            return self.parse_bogus_comment(i)
+
+    # Internal -- parse bogus comment, return length or -1 if not terminated
+    # see http://www.w3.org/TR/html5/tokenization.html#bogus-comment-state
+    def parse_bogus_comment(self, i, report=1):
+        rawdata = self.rawdata
+        assert rawdata[i:i+2] in (&#39;&lt;!&#39;, &#39;&lt;/&#39;), (&#39;unexpected call to &#39;
+                                                &#39;parse_comment()&#39;)
+        pos = rawdata.find(&#39;&gt;&#39;, i+2)
+        if pos == -1:
+            return -1
+        if report:
+            self.handle_comment(rawdata[i+2:pos])
+        return pos + 1
+
+    # Internal -- parse processing instr, return end or -1 if not terminated
+    def parse_pi(self, i):
+        rawdata = self.rawdata
+        assert rawdata[i:i+2] == &#39;&lt;?&#39;, &#39;unexpected call to parse_pi()&#39;
+        match = piclose.search(rawdata, i+2) # &gt;
+        if not match:
+            return -1
+        j = match.start()
+        self.handle_pi(rawdata[i+2: j])
+        j = match.end()
+        return j
+
+    # Internal -- handle starttag, return end or -1 if not terminated
+    def parse_starttag(self, i):
+        self.__starttag_text = None
+        endpos = self.check_for_whole_start_tag(i)
+        if endpos &lt; 0:
+            return endpos
+        rawdata = self.rawdata
+        self.__starttag_text = rawdata[i:endpos]
+
+        # Now parse the data between i+1 and j into a tag and attrs
+        attrs = []
+        match = tagfind_tolerant.match(rawdata, i+1)
+        assert match, &#39;unexpected call to parse_starttag()&#39;
+        k = match.end()
+        self.lasttag = tag = match.group(1).lower()
+        while k &lt; endpos:
+            m = attrfind_tolerant.match(rawdata, k)
+            if not m:
+                break
+            attrname, rest, attrvalue = m.group(1, 2, 3)
+            if not rest:
+                attrvalue = None
+            elif attrvalue[:1] == &#39;\&#39;&#39; == attrvalue[-1:] or \
+                 attrvalue[:1] == &#39;&#34;&#39; == attrvalue[-1:]:
+                attrvalue = attrvalue[1:-1]
+            if attrvalue:
+                attrvalue = unescape(attrvalue)
+            attrs.append((attrname.lower(), attrvalue))
+            k = m.end()
+
+        end = rawdata[k:endpos].strip()
+        if end not in (&#34;&gt;&#34;, &#34;/&gt;&#34;):
+            self.handle_data(rawdata[i:endpos])
+            return endpos
+        if end.endswith(&#39;/&gt;&#39;):
+            # XHTML-style empty tag: &lt;span attr=&#34;value&#34; /&gt;
+            self.handle_startendtag(tag, attrs)
+        else:
+            self.handle_starttag(tag, attrs)
+            if tag in self.CDATA_CONTENT_ELEMENTS:
+                self.set_cdata_mode(tag)
+        return endpos
+
+    # Internal -- check to see if we have a complete starttag; return end
+    # or -1 if incomplete.
+    def check_for_whole_start_tag(self, i):
+        rawdata = self.rawdata
+        m = locatestarttagend_tolerant.match(rawdata, i)
+        if m:
+            j = m.end()
+            next = rawdata[j:j+1]
+            if next == &#34;&gt;&#34;:
+                return j + 1
+            if next == &#34;/&#34;:
+                if rawdata.startswith(&#34;/&gt;&#34;, j):
+                    return j + 2
+                if rawdata.startswith(&#34;/&#34;, j):
+                    # buffer boundary
+                    return -1
+                # else bogus input
+                if j &gt; i:
+                    return j
+                else:
+                    return i + 1
+            if next == &#34;&#34;:
+                # end of input
+                return -1
+            if next in (&#34;abcdefghijklmnopqrstuvwxyz=/&#34;
+                        &#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#34;):
+                # end of input in or before attribute value, or we have the
+                # &#39;/&#39; from a &#39;/&gt;&#39; ending
+                return -1
+            if j &gt; i:
+                return j
+            else:
+                return i + 1
+        raise AssertionError(&#34;we should not get here!&#34;)
+
+    # Internal -- parse endtag, return end or -1 if incomplete
+    def parse_endtag(self, i):
+        rawdata = self.rawdata
+        assert rawdata[i:i+2] == &#34;&lt;/&#34;, &#34;unexpected call to parse_endtag&#34;
+        match = endendtag.search(rawdata, i+1) # &gt;
+        if not match:
+            return -1
+        gtpos = match.end()
+        match = endtagfind.match(rawdata, i) # &lt;/ + tag + &gt;
+        if not match:
+            if self.cdata_elem is not None:
+                self.handle_data(rawdata[i:gtpos])
+                return gtpos
+            # find the name: w3.org/TR/html5/tokenization.html#tag-name-state
+            namematch = tagfind_tolerant.match(rawdata, i+2)
+            if not namematch:
+                # w3.org/TR/html5/tokenization.html#end-tag-open-state
+                if rawdata[i:i+3] == &#39;&lt;/&gt;&#39;:
+                    return i+3
+                else:
+                    return self.parse_bogus_comment(i)
+            tagname = namematch.group(1).lower()
+            # consume and ignore other stuff between the name and the &gt;
+            # Note: this is not 100% correct, since we might have things like
+            # &lt;/tag attr=&#34;&gt;&#34;&gt;, but looking for &gt; after the name should cover
+            # most of the cases and is much simpler
+            gtpos = rawdata.find(&#39;&gt;&#39;, namematch.end())
+            self.handle_endtag(tagname)
+            return gtpos+1
+
+        elem = match.group(1).lower() # script or style
+        if self.cdata_elem is not None:
+            if elem != self.cdata_elem:
+                self.handle_data(rawdata[i:gtpos])
+                return gtpos
+
+        self.handle_endtag(elem)
+        self.clear_cdata_mode()
+        return gtpos
+
+    # Overridable -- finish processing of start+end tag: &lt;tag.../&gt;
+    def handle_startendtag(self, tag, attrs):
+        self.handle_starttag(tag, attrs)
+        self.handle_endtag(tag)
+
+    # Overridable -- handle start tag
+    def handle_starttag(self, tag, attrs):
+        pass
+
+    # Overridable -- handle end tag
+    def handle_endtag(self, tag):
+        pass
+
+    # Overridable -- handle character reference
+    def handle_charref(self, name):
+        pass
+
+    # Overridable -- handle entity reference
+    def handle_entityref(self, name):
+        pass
+
+    # Overridable -- handle data
+    def handle_data(self, data):
+        pass
+
+    # Overridable -- handle comment
+    def handle_comment(self, data):
+        pass
+
+    # Overridable -- handle declaration
+    def handle_decl(self, decl):
+        pass
+
+    # Overridable -- handle processing instruction
+    def handle_pi(self, data):
+        pass
+
+    def unknown_decl(self, data):
+        pass</code></pre>
+</details>
+<div class="desc"><p>Find tags and other markup and call handler functions.</p>
+<h2 id="usage">Usage</h2>
+<p>p = HTMLParser()
+p.feed(data)
+&hellip;
+p.close()</p>
+<p>Start tags are handled by calling self.handle_starttag() or
+self.handle_startendtag(); end tags by self.handle_endtag().
+The
+data between tags is passed from the parser to the derived class
+by calling self.handle_data() with the data as argument (the data
+may be split up in arbitrary chunks).
+If convert_charrefs is
+True the character references are converted automatically to the
+corresponding Unicode character (and self.handle_data() is no
+longer split in chunks), otherwise they are passed by calling
+self.handle_entityref() or self.handle_charref() with the string
+containing respectively the named or numeric reference as the
+argument.</p>
+<p>Initialize and reset this instance.</p>
+<p>If convert_charrefs is True (the default), all character references
+are automatically converted to the corresponding Unicode characters.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>_markupbase.ParserBase</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="html.parser.HTMLParser.CDATA_CONTENT_ELEMENTS"><code class="name">var <span class="ident">CDATA_CONTENT_ELEMENTS</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="html.parser.HTMLParser.check_for_whole_start_tag"><code class="name flex">
+<span>def <span class="ident">check_for_whole_start_tag</span></span>(<span>self, i)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_for_whole_start_tag(self, i):
+    rawdata = self.rawdata
+    m = locatestarttagend_tolerant.match(rawdata, i)
+    if m:
+        j = m.end()
+        next = rawdata[j:j+1]
+        if next == &#34;&gt;&#34;:
+            return j + 1
+        if next == &#34;/&#34;:
+            if rawdata.startswith(&#34;/&gt;&#34;, j):
+                return j + 2
+            if rawdata.startswith(&#34;/&#34;, j):
+                # buffer boundary
+                return -1
+            # else bogus input
+            if j &gt; i:
+                return j
+            else:
+                return i + 1
+        if next == &#34;&#34;:
+            # end of input
+            return -1
+        if next in (&#34;abcdefghijklmnopqrstuvwxyz=/&#34;
+                    &#34;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#34;):
+            # end of input in or before attribute value, or we have the
+            # &#39;/&#39; from a &#39;/&gt;&#39; ending
+            return -1
+        if j &gt; i:
+            return j
+        else:
+            return i + 1
+    raise AssertionError(&#34;we should not get here!&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.clear_cdata_mode"><code class="name flex">
+<span>def <span class="ident">clear_cdata_mode</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def clear_cdata_mode(self):
+    self.interesting = interesting_normal
+    self.cdata_elem = None</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self):
+    &#34;&#34;&#34;Handle any buffered data.&#34;&#34;&#34;
+    self.goahead(1)</code></pre>
+</details>
+<div class="desc"><p>Handle any buffered data.</p></div>
+</dd>
+<dt id="html.parser.HTMLParser.feed"><code class="name flex">
+<span>def <span class="ident">feed</span></span>(<span>self, data)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def feed(self, data):
+    r&#34;&#34;&#34;Feed data to the parser.
+
+    Call this as often as you want, with as little or as much text
+    as you want (may include &#39;\n&#39;).
+    &#34;&#34;&#34;
+    self.rawdata = self.rawdata + data
+    self.goahead(0)</code></pre>
+</details>
+<div class="desc"><p>Feed data to the parser.</p>
+<p>Call this as often as you want, with as little or as much text
+as you want (may include '\n').</p></div>
+</dd>
+<dt id="html.parser.HTMLParser.get_starttag_text"><code class="name flex">
+<span>def <span class="ident">get_starttag_text</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_starttag_text(self):
+    &#34;&#34;&#34;Return full source of start tag: &#39;&lt;...&gt;&#39;.&#34;&#34;&#34;
+    return self.__starttag_text</code></pre>
+</details>
+<div class="desc"><p>Return full source of start tag: '&lt;&hellip;&gt;'.</p></div>
+</dd>
+<dt id="html.parser.HTMLParser.goahead"><code class="name flex">
+<span>def <span class="ident">goahead</span></span>(<span>self, end)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def goahead(self, end):
+    rawdata = self.rawdata
+    i = 0
+    n = len(rawdata)
+    while i &lt; n:
+        if self.convert_charrefs and not self.cdata_elem:
+            j = rawdata.find(&#39;&lt;&#39;, i)
+            if j &lt; 0:
+                # if we can&#39;t find the next &lt;, either we are at the end
+                # or there&#39;s more text incoming.  If the latter is True,
+                # we can&#39;t pass the text to handle_data in case we have
+                # a charref cut in half at end.  Try to determine if
+                # this is the case before proceeding by looking for an
+                # &amp; near the end and see if it&#39;s followed by a space or ;.
+                amppos = rawdata.rfind(&#39;&amp;&#39;, max(i, n-34))
+                if (amppos &gt;= 0 and
+                    not re.compile(r&#39;[\s;]&#39;).search(rawdata, amppos)):
+                    break  # wait till we get all the text
+                j = n
+        else:
+            match = self.interesting.search(rawdata, i)  # &lt; or &amp;
+            if match:
+                j = match.start()
+            else:
+                if self.cdata_elem:
+                    break
+                j = n
+        if i &lt; j:
+            if self.convert_charrefs and not self.cdata_elem:
+                self.handle_data(unescape(rawdata[i:j]))
+            else:
+                self.handle_data(rawdata[i:j])
+        i = self.updatepos(i, j)
+        if i == n: break
+        startswith = rawdata.startswith
+        if startswith(&#39;&lt;&#39;, i):
+            if starttagopen.match(rawdata, i): # &lt; + letter
+                k = self.parse_starttag(i)
+            elif startswith(&#34;&lt;/&#34;, i):
+                k = self.parse_endtag(i)
+            elif startswith(&#34;&lt;!--&#34;, i):
+                k = self.parse_comment(i)
+            elif startswith(&#34;&lt;?&#34;, i):
+                k = self.parse_pi(i)
+            elif startswith(&#34;&lt;!&#34;, i):
+                k = self.parse_html_declaration(i)
+            elif (i + 1) &lt; n:
+                self.handle_data(&#34;&lt;&#34;)
+                k = i + 1
+            else:
+                break
+            if k &lt; 0:
+                if not end:
+                    break
+                k = rawdata.find(&#39;&gt;&#39;, i + 1)
+                if k &lt; 0:
+                    k = rawdata.find(&#39;&lt;&#39;, i + 1)
+                    if k &lt; 0:
+                        k = i + 1
+                else:
+                    k += 1
+                if self.convert_charrefs and not self.cdata_elem:
+                    self.handle_data(unescape(rawdata[i:k]))
+                else:
+                    self.handle_data(rawdata[i:k])
+            i = self.updatepos(i, k)
+        elif startswith(&#34;&amp;#&#34;, i):
+            match = charref.match(rawdata, i)
+            if match:
+                name = match.group()[2:-1]
+                self.handle_charref(name)
+                k = match.end()
+                if not startswith(&#39;;&#39;, k-1):
+                    k = k - 1
+                i = self.updatepos(i, k)
+                continue
+            else:
+                if &#34;;&#34; in rawdata[i:]:  # bail by consuming &amp;#
+                    self.handle_data(rawdata[i:i+2])
+                    i = self.updatepos(i, i+2)
+                break
+        elif startswith(&#39;&amp;&#39;, i):
+            match = entityref.match(rawdata, i)
+            if match:
+                name = match.group(1)
+                self.handle_entityref(name)
+                k = match.end()
+                if not startswith(&#39;;&#39;, k-1):
+                    k = k - 1
+                i = self.updatepos(i, k)
+                continue
+            match = incomplete.match(rawdata, i)
+            if match:
+                # match.group() will contain at least 2 chars
+                if end and match.group() == rawdata[i:]:
+                    k = match.end()
+                    if k &lt;= i:
+                        k = n
+                    i = self.updatepos(i, i + 1)
+                # incomplete
+                break
+            elif (i + 1) &lt; n:
+                # not the end of the buffer, and can&#39;t be confused
+                # with some other construct
+                self.handle_data(&#34;&amp;&#34;)
+                i = self.updatepos(i, i + 1)
+            else:
+                break
+        else:
+            assert 0, &#34;interesting.search() lied&#34;
+    # end while
+    if end and i &lt; n and not self.cdata_elem:
+        if self.convert_charrefs and not self.cdata_elem:
+            self.handle_data(unescape(rawdata[i:n]))
+        else:
+            self.handle_data(rawdata[i:n])
+        i = self.updatepos(i, n)
+    self.rawdata = rawdata[i:]</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.handle_charref"><code class="name flex">
+<span>def <span class="ident">handle_charref</span></span>(<span>self, name)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handle_charref(self, name):
+    pass</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.handle_comment"><code class="name flex">
+<span>def <span class="ident">handle_comment</span></span>(<span>self, data)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handle_comment(self, data):
+    pass</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.handle_data"><code class="name flex">
+<span>def <span class="ident">handle_data</span></span>(<span>self, data)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handle_data(self, data):
+    pass</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.handle_decl"><code class="name flex">
+<span>def <span class="ident">handle_decl</span></span>(<span>self, decl)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handle_decl(self, decl):
+    pass</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.handle_endtag"><code class="name flex">
+<span>def <span class="ident">handle_endtag</span></span>(<span>self, tag)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handle_endtag(self, tag):
+    pass</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.handle_entityref"><code class="name flex">
+<span>def <span class="ident">handle_entityref</span></span>(<span>self, name)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handle_entityref(self, name):
+    pass</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.handle_pi"><code class="name flex">
+<span>def <span class="ident">handle_pi</span></span>(<span>self, data)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handle_pi(self, data):
+    pass</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.handle_startendtag"><code class="name flex">
+<span>def <span class="ident">handle_startendtag</span></span>(<span>self, tag, attrs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handle_startendtag(self, tag, attrs):
+    self.handle_starttag(tag, attrs)
+    self.handle_endtag(tag)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.handle_starttag"><code class="name flex">
+<span>def <span class="ident">handle_starttag</span></span>(<span>self, tag, attrs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def handle_starttag(self, tag, attrs):
+    pass</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.parse_bogus_comment"><code class="name flex">
+<span>def <span class="ident">parse_bogus_comment</span></span>(<span>self, i, report=1)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_bogus_comment(self, i, report=1):
+    rawdata = self.rawdata
+    assert rawdata[i:i+2] in (&#39;&lt;!&#39;, &#39;&lt;/&#39;), (&#39;unexpected call to &#39;
+                                            &#39;parse_comment()&#39;)
+    pos = rawdata.find(&#39;&gt;&#39;, i+2)
+    if pos == -1:
+        return -1
+    if report:
+        self.handle_comment(rawdata[i+2:pos])
+    return pos + 1</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.parse_endtag"><code class="name flex">
+<span>def <span class="ident">parse_endtag</span></span>(<span>self, i)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_endtag(self, i):
+    rawdata = self.rawdata
+    assert rawdata[i:i+2] == &#34;&lt;/&#34;, &#34;unexpected call to parse_endtag&#34;
+    match = endendtag.search(rawdata, i+1) # &gt;
+    if not match:
+        return -1
+    gtpos = match.end()
+    match = endtagfind.match(rawdata, i) # &lt;/ + tag + &gt;
+    if not match:
+        if self.cdata_elem is not None:
+            self.handle_data(rawdata[i:gtpos])
+            return gtpos
+        # find the name: w3.org/TR/html5/tokenization.html#tag-name-state
+        namematch = tagfind_tolerant.match(rawdata, i+2)
+        if not namematch:
+            # w3.org/TR/html5/tokenization.html#end-tag-open-state
+            if rawdata[i:i+3] == &#39;&lt;/&gt;&#39;:
+                return i+3
+            else:
+                return self.parse_bogus_comment(i)
+        tagname = namematch.group(1).lower()
+        # consume and ignore other stuff between the name and the &gt;
+        # Note: this is not 100% correct, since we might have things like
+        # &lt;/tag attr=&#34;&gt;&#34;&gt;, but looking for &gt; after the name should cover
+        # most of the cases and is much simpler
+        gtpos = rawdata.find(&#39;&gt;&#39;, namematch.end())
+        self.handle_endtag(tagname)
+        return gtpos+1
+
+    elem = match.group(1).lower() # script or style
+    if self.cdata_elem is not None:
+        if elem != self.cdata_elem:
+            self.handle_data(rawdata[i:gtpos])
+            return gtpos
+
+    self.handle_endtag(elem)
+    self.clear_cdata_mode()
+    return gtpos</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.parse_html_declaration"><code class="name flex">
+<span>def <span class="ident">parse_html_declaration</span></span>(<span>self, i)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_html_declaration(self, i):
+    rawdata = self.rawdata
+    assert rawdata[i:i+2] == &#39;&lt;!&#39;, (&#39;unexpected call to &#39;
+                                    &#39;parse_html_declaration()&#39;)
+    if rawdata[i:i+4] == &#39;&lt;!--&#39;:
+        # this case is actually already handled in goahead()
+        return self.parse_comment(i)
+    elif rawdata[i:i+3] == &#39;&lt;![&#39;:
+        return self.parse_marked_section(i)
+    elif rawdata[i:i+9].lower() == &#39;&lt;!doctype&#39;:
+        # find the closing &gt;
+        gtpos = rawdata.find(&#39;&gt;&#39;, i+9)
+        if gtpos == -1:
+            return -1
+        self.handle_decl(rawdata[i+2:gtpos])
+        return gtpos+1
+    else:
+        return self.parse_bogus_comment(i)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.parse_pi"><code class="name flex">
+<span>def <span class="ident">parse_pi</span></span>(<span>self, i)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_pi(self, i):
+    rawdata = self.rawdata
+    assert rawdata[i:i+2] == &#39;&lt;?&#39;, &#39;unexpected call to parse_pi()&#39;
+    match = piclose.search(rawdata, i+2) # &gt;
+    if not match:
+        return -1
+    j = match.start()
+    self.handle_pi(rawdata[i+2: j])
+    j = match.end()
+    return j</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.parse_starttag"><code class="name flex">
+<span>def <span class="ident">parse_starttag</span></span>(<span>self, i)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_starttag(self, i):
+    self.__starttag_text = None
+    endpos = self.check_for_whole_start_tag(i)
+    if endpos &lt; 0:
+        return endpos
+    rawdata = self.rawdata
+    self.__starttag_text = rawdata[i:endpos]
+
+    # Now parse the data between i+1 and j into a tag and attrs
+    attrs = []
+    match = tagfind_tolerant.match(rawdata, i+1)
+    assert match, &#39;unexpected call to parse_starttag()&#39;
+    k = match.end()
+    self.lasttag = tag = match.group(1).lower()
+    while k &lt; endpos:
+        m = attrfind_tolerant.match(rawdata, k)
+        if not m:
+            break
+        attrname, rest, attrvalue = m.group(1, 2, 3)
+        if not rest:
+            attrvalue = None
+        elif attrvalue[:1] == &#39;\&#39;&#39; == attrvalue[-1:] or \
+             attrvalue[:1] == &#39;&#34;&#39; == attrvalue[-1:]:
+            attrvalue = attrvalue[1:-1]
+        if attrvalue:
+            attrvalue = unescape(attrvalue)
+        attrs.append((attrname.lower(), attrvalue))
+        k = m.end()
+
+    end = rawdata[k:endpos].strip()
+    if end not in (&#34;&gt;&#34;, &#34;/&gt;&#34;):
+        self.handle_data(rawdata[i:endpos])
+        return endpos
+    if end.endswith(&#39;/&gt;&#39;):
+        # XHTML-style empty tag: &lt;span attr=&#34;value&#34; /&gt;
+        self.handle_startendtag(tag, attrs)
+    else:
+        self.handle_starttag(tag, attrs)
+        if tag in self.CDATA_CONTENT_ELEMENTS:
+            self.set_cdata_mode(tag)
+    return endpos</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.reset"><code class="name flex">
+<span>def <span class="ident">reset</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset(self):
+    &#34;&#34;&#34;Reset this instance.  Loses all unprocessed data.&#34;&#34;&#34;
+    self.rawdata = &#39;&#39;
+    self.lasttag = &#39;???&#39;
+    self.interesting = interesting_normal
+    self.cdata_elem = None
+    super().reset()</code></pre>
+</details>
+<div class="desc"><p>Reset this instance.
+Loses all unprocessed data.</p></div>
+</dd>
+<dt id="html.parser.HTMLParser.set_cdata_mode"><code class="name flex">
+<span>def <span class="ident">set_cdata_mode</span></span>(<span>self, elem)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_cdata_mode(self, elem):
+    self.cdata_elem = elem.lower()
+    self.interesting = re.compile(r&#39;&lt;/\s*%s\s*&gt;&#39; % self.cdata_elem, re.I)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="html.parser.HTMLParser.unknown_decl"><code class="name flex">
+<span>def <span class="ident">unknown_decl</span></span>(<span>self, data)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def unknown_decl(self, data):
+    pass</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="html" href="index.html">html</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="html.parser.HTMLParser" href="#html.parser.HTMLParser">HTMLParser</a></code></h4>
+<ul class="">
+<li><code><a title="html.parser.HTMLParser.CDATA_CONTENT_ELEMENTS" href="#html.parser.HTMLParser.CDATA_CONTENT_ELEMENTS">CDATA_CONTENT_ELEMENTS</a></code></li>
+<li><code><a title="html.parser.HTMLParser.check_for_whole_start_tag" href="#html.parser.HTMLParser.check_for_whole_start_tag">check_for_whole_start_tag</a></code></li>
+<li><code><a title="html.parser.HTMLParser.clear_cdata_mode" href="#html.parser.HTMLParser.clear_cdata_mode">clear_cdata_mode</a></code></li>
+<li><code><a title="html.parser.HTMLParser.close" href="#html.parser.HTMLParser.close">close</a></code></li>
+<li><code><a title="html.parser.HTMLParser.feed" href="#html.parser.HTMLParser.feed">feed</a></code></li>
+<li><code><a title="html.parser.HTMLParser.get_starttag_text" href="#html.parser.HTMLParser.get_starttag_text">get_starttag_text</a></code></li>
+<li><code><a title="html.parser.HTMLParser.goahead" href="#html.parser.HTMLParser.goahead">goahead</a></code></li>
+<li><code><a title="html.parser.HTMLParser.handle_charref" href="#html.parser.HTMLParser.handle_charref">handle_charref</a></code></li>
+<li><code><a title="html.parser.HTMLParser.handle_comment" href="#html.parser.HTMLParser.handle_comment">handle_comment</a></code></li>
+<li><code><a title="html.parser.HTMLParser.handle_data" href="#html.parser.HTMLParser.handle_data">handle_data</a></code></li>
+<li><code><a title="html.parser.HTMLParser.handle_decl" href="#html.parser.HTMLParser.handle_decl">handle_decl</a></code></li>
+<li><code><a title="html.parser.HTMLParser.handle_endtag" href="#html.parser.HTMLParser.handle_endtag">handle_endtag</a></code></li>
+<li><code><a title="html.parser.HTMLParser.handle_entityref" href="#html.parser.HTMLParser.handle_entityref">handle_entityref</a></code></li>
+<li><code><a title="html.parser.HTMLParser.handle_pi" href="#html.parser.HTMLParser.handle_pi">handle_pi</a></code></li>
+<li><code><a title="html.parser.HTMLParser.handle_startendtag" href="#html.parser.HTMLParser.handle_startendtag">handle_startendtag</a></code></li>
+<li><code><a title="html.parser.HTMLParser.handle_starttag" href="#html.parser.HTMLParser.handle_starttag">handle_starttag</a></code></li>
+<li><code><a title="html.parser.HTMLParser.parse_bogus_comment" href="#html.parser.HTMLParser.parse_bogus_comment">parse_bogus_comment</a></code></li>
+<li><code><a title="html.parser.HTMLParser.parse_endtag" href="#html.parser.HTMLParser.parse_endtag">parse_endtag</a></code></li>
+<li><code><a title="html.parser.HTMLParser.parse_html_declaration" href="#html.parser.HTMLParser.parse_html_declaration">parse_html_declaration</a></code></li>
+<li><code><a title="html.parser.HTMLParser.parse_pi" href="#html.parser.HTMLParser.parse_pi">parse_pi</a></code></li>
+<li><code><a title="html.parser.HTMLParser.parse_starttag" href="#html.parser.HTMLParser.parse_starttag">parse_starttag</a></code></li>
+<li><code><a title="html.parser.HTMLParser.reset" href="#html.parser.HTMLParser.reset">reset</a></code></li>
+<li><code><a title="html.parser.HTMLParser.set_cdata_mode" href="#html.parser.HTMLParser.set_cdata_mode">set_cdata_mode</a></code></li>
+<li><code><a title="html.parser.HTMLParser.unknown_decl" href="#html.parser.HTMLParser.unknown_decl">unknown_decl</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>PuppyPi API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>PuppyPi</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="PuppyPi.PuppyPi"><code class="flex name class">
+<span>class <span class="ident">PuppyPi</span></span>
+<span>(</span><span>ip: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PuppyPi:
+    # acciones predefinidas
+    ACTION_BOXING = &#34;boxing&#34;
+    ACTION_BOXING_2 = &#34;boxing2&#34;
+    ACTION_BOW = &#34;bow&#34;
+    ACTION_JUMP = &#34;jump&#34;
+    ACTION_KICK_BALL_LEFT = &#34;kick_ball_left&#34;
+    ACTION_KICK_BALL_RIGHT = &#34;kick_ball_right&#34;
+    ACTION_LIE_DOWN = &#34;lie_down&#34;
+    ACTION_MONNWALK = &#34;moonwalk&#34;
+    ACTION_NOD = &#34;nod&#34;
+    ACTION_PEE = &#34;pee&#34;
+    ACTION_PUSH_UP = &#34;push-up&#34;
+    ACTION_SHAKE_HANDS = &#34;shake_hands&#34;
+    ACTION_SHAKE_HEAD = &#34;shake_head&#34;
+    ACTION_SIT = &#34;sit&#34;
+    ACTION_SPACEWALK = &#34;spacewalk&#34;
+    ACTION_STRETCH = &#34;stretch&#34;
+    ACTION_STAND_2_LEGS = &#34;2_legs_stand&#34;
+    ACTION_STAND_4_LEGS = &#34;stand&#34;
+    ACTION_UP_STAIRS_2CM = &#34;up_stairs_2cm&#34;
+    ACTION_UP_STAIRS_3_5CM = &#34;up_stairs_3.5cm&#34;
+    ACTION_UP_STAIRS_3_5CM_0 = &#34;up_stairs_3.5cm0&#34;
+    ACTION_UP_STAIRS_3_5CM_1 = &#34;up_stairs_3.5cm1&#34;
+    ACTION_WAVE = &#34;wave&#34;
+
+    # tipos de pasos predefinidos
+    GAIL_TROT = &#34;Trot&#34;
+    GAIL_AMBLE = &#34;Amble&#34;
+    GAIL_WALK = &#34;Walk&#34;
+
+    def __init__(self, ip: str):
+        &#34;&#34;&#34;Establece la conexion con el robot dado por la direccion IP.
+
+        Args:
+            ip (str): direccion IP del robot.
+        &#34;&#34;&#34;
+        # nos conectamos
+        self.ros = roslibpy.Ros(host=ip, port=9090)
+        self.ros.run()
+
+        # para las acciones predefinidas
+        service = &#34;/puppy_control/runActionGroup&#34;
+        msg_type = self.ros.get_topic_type(service)
+        self.action_group_srv = roslibpy.Service(self.ros, service, msg_type)
+
+        # para desplazamiento
+        topic = &#34;/puppy_control/velocity&#34;
+        msg_type = self.ros.get_topic_type(topic)
+        self.velocity_pub = roslibpy.Topic(self.ros, topic, msg_type, queue_size=1)
+
+        # para capturar la camara
+        topic = &#34;/usb_cam/image_raw&#34;
+        msg_type = self.ros.get_topic_type(topic)
+        self.image_raw_pub = roslibpy.Topic(self.ros, topic, msg_type, queue_length=1)
+
+        # para las posturas
+        topic = &#34;/puppy_control/pose&#34;
+        msg_type = self.ros.get_topic_type(topic)
+        self.pose_pub = roslibpy.Topic(self.ros, topic, msg_type, queue_size=1)
+        self.pose_params = {}
+
+        # para las formas de desplazamiento
+        topic = &#34;/puppy_control/gait&#34;
+        msg_type = self.ros.get_topic_type(topic)
+        self.gait_pub = roslibpy.Topic(self.ros, topic, msg_type, queue_size=1)
+
+        # dejamos en posicion de pie al robot
+        self.setPoseStand()
+
+    def finish(self) -&gt; None:
+        &#34;&#34;&#34;Finaliza la interaccion con el robot.&#34;&#34;&#34;
+        self.gait_pub.unsubscribe()
+        self.pose_pub.unsubscribe()
+        self.image_raw_pub.unsubscribe()
+        self.velocity_pub.unadvertise()
+        self.action_group_srv.unadvertise()
+        self.ros.terminate()
+
+    def runActionGroup(self, action: str, pause: float = 4.0) -&gt; None:
+        &#34;&#34;&#34;Ejecuta una de las acciones predefinidas del robot.
+
+        Args:
+            action (str): la accion a ejecutar.
+            pause (float, optional): tiempo en segundos de pausa antes de retornar. Por defecto es 4.0s.
+        &#34;&#34;&#34;
+        request = roslibpy.ServiceRequest({&#34;name&#34;: action + &#34;.d6ac&#34;})
+        self.action_group_srv.call(request)
+
+        # no sabemos cuando el servicio ha finalizado su ejecucion
+        time.sleep(pause)
+
+    def move(self, x: float, yaw_rate: float, gait: str = &#34;Walk&#34;) -&gt; None:
+        &#34;&#34;&#34;Inicia el desplazamiento del robot.
+
+        Args:
+            x (float): mueve el robot hacia atras o hacia adelante (-35 a +35 ¿mm/s?).
+            yaw_rate (float): mueve el robot hacia la izquierda o hacia la derecha (-50 a +50 grados/s).
+            gait (str, optional): la forma de andar del robot (default GAIL_WALK).
+        &#34;&#34;&#34;
+        # preparamos paranetros segun el modo de andar
+        if gait == PuppyPi.GAIL_TROT:
+            gait_config = {
+                &#34;overlap_time&#34;: 0.2,
+                &#34;swing_time&#34;: 0.3,
+                &#34;clearance_time&#34;: 0.0,
+                &#34;z_clearance&#34;: 5,
+            }
+            self.pose_params[&#34;x_shift&#34;] = -0.6
+        elif gait == PuppyPi.GAIL_AMBLE:
+            gait_config = {
+                &#34;overlap_time&#34;: 0.1,
+                &#34;swing_time&#34;: 0.2,
+                &#34;clearance_time&#34;: 0.1,
+                &#34;z_clearance&#34;: 5,
+            }
+            self.pose_params[&#34;x_shift&#34;] = -0.9
+        else:  # GAIL_WALK
+            gait_config = {
+                &#34;overlap_time&#34;: 0.1,
+                &#34;swing_time&#34;: 0.2,
+                &#34;clearance_time&#34;: 0.3,
+                &#34;z_clearance&#34;: 5,
+            }
+            self.pose_params[&#34;x_shift&#34;] = -0.65
+
+        # la postura
+        self.pose_pub.publish(roslibpy.Message(self.pose_params))
+
+        # la forma de andar
+        self.gait_pub.publish(roslibpy.Message(gait_config))
+
+        # lo ponemos en marcha
+        self.velocity_pub.publish(
+            roslibpy.Message({&#34;x&#34;: x, &#34;y&#34;: 0.0, &#34;yaw_rate&#34;: math.radians(-yaw_rate)})
+        )
+
+    def move_stop(self) -&gt; None:
+        &#34;&#34;&#34;Detiene el desplazamiento del robot&#34;&#34;&#34;
+        self.velocity_pub.publish(
+            roslibpy.Message({&#34;x&#34;: 0.0, &#34;y&#34;: 0.0, &#34;yaw_rate&#34;: 0.0})
+        )
+
+    def imageRaw_start(self, callback) -&gt; None:
+        &#34;&#34;&#34;Inicia la captura de imagenes desde la camara del robot.
+
+        La funcion callback recibira un parametro (&#39;result&#39;)  del tipo diccionario
+
+        Args:
+            callback (function): funcion a ser invocada cada vez que se tenga una imagen de la camara.
+
+        Examples:
+            Ejemplo dentro del callback para opencv:
+
+                def callback(result):
+                    h = result[&#34;height&#34;]
+                    w = result[&#34;width&#34;]
+                    enc = result[&#34;encoding&#34;]
+                    img = result[&#34;data&#34;].encode(&#34;ascii&#34;)
+                    img = base64.b64decode(img)
+                    img = np.frombuffer(img, np.uint8)
+                    img = img.reshape((h, w, 3))
+                    img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+
+
+        &#34;&#34;&#34;
+        self.image_raw_pub.subscribe(callback)
+
+    def imageRaw_stop(self) -&gt; None:
+        &#34;&#34;&#34;Finaliza la captura de imagenes desde la camara del robot.&#34;&#34;&#34;
+        self.image_raw_pub.unsubscribe()
+
+    def setPose(
+        self, roll: float, pitch: float, height: float, run_time: float = 1.0
+    ) -&gt; None:
+        &#34;&#34;&#34;Establece una postura para el robot.
+
+        Args:
+            roll (float): -30 a 30 grados.
+            pitch (float): -30 a 30 grados.
+            height (float): altura de las patas del robot (50 a 150 mm).
+            run_time (float, optional): tiempo de ejecucion para alcanzar la postura. Por defecto en 1.0s.
+        &#34;&#34;&#34;
+        self.pose_params = {
+            &#34;roll&#34;: math.radians(roll),
+            &#34;pitch&#34;: math.radians(pitch),
+            &#34;yaw&#34;: 0.0,
+            &#34;height&#34;: -height / 10.0,
+            &#34;x_shift&#34;: 0.0,
+            &#34;stance_x&#34;: 0.0,
+            &#34;stance_y&#34;: 0.0,
+            &#34;run_time&#34;: int(run_time * 1000.0),  # debe ser integer
+        }
+        self.pose_pub.publish(roslibpy.Message(self.pose_params))
+        time.sleep(run_time + 0.2)
+
+    def setPoseStand(self, run_time: float = 1.0) -&gt; None:
+        &#34;&#34;&#34;Establece la postura de pie para el robot.
+
+        Args:
+            run_time (float, optional): tiempo de ejecucion para alcanzar la postura. Por defecto en 1.0s.
+        &#34;&#34;&#34;
+        self.pose_params = {
+            &#34;roll&#34;: 0.00,
+            &#34;pitch&#34;: 0.00,
+            &#34;yaw&#34;: 0.00,
+            &#34;height&#34;: -10.0,
+            &#34;x_shift&#34;: -0.5,
+            &#34;stance_x&#34;: 0.0,
+            &#34;stance_y&#34;: 0.0,
+            &#34;run_time&#34;: int(run_time * 1000.0),  # debe ser integer
+        }
+        self.pose_pub.publish(roslibpy.Message(self.pose_params))
+        time.sleep(run_time + 0.2)
+
+    def setPoseLieDown(self, run_time: float = 1.0) -&gt; None:
+        &#34;&#34;&#34;Establece la postura agachado para el robot.
+
+        Args:
+            run_time (float, optional): tiempo de ejecucion para alcanzar la postura. Por defecto en 1.0s.
+        &#34;&#34;&#34;
+        self.pose_params = {
+            &#34;roll&#34;: 0.00,
+            &#34;pitch&#34;: 0.00,
+            &#34;yaw&#34;: 0.00,
+            &#34;height&#34;: -5.0,
+            &#34;x_shift&#34;: 2.0,
+            &#34;stance_x&#34;: 0.0,
+            &#34;stance_y&#34;: 0.0,
+            &#34;run_time&#34;: int(run_time * 1000.0),  # debe ser integer
+        }
+        self.pose_pub.publish(roslibpy.Message(self.pose_params))
+        time.sleep(run_time + 0.2)</code></pre>
+</details>
+<div class="desc"><p>Establece la conexion con el robot dado por la direccion IP.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>ip</code></strong> :&ensp;<code>str</code></dt>
+<dd>direccion IP del robot.</dd>
+</dl></div>
+<h3>Class variables</h3>
+<dl>
+<dt id="PuppyPi.PuppyPi.ACTION_BOW"><code class="name">var <span class="ident">ACTION_BOW</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_BOXING"><code class="name">var <span class="ident">ACTION_BOXING</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_BOXING_2"><code class="name">var <span class="ident">ACTION_BOXING_2</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_JUMP"><code class="name">var <span class="ident">ACTION_JUMP</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_KICK_BALL_LEFT"><code class="name">var <span class="ident">ACTION_KICK_BALL_LEFT</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_KICK_BALL_RIGHT"><code class="name">var <span class="ident">ACTION_KICK_BALL_RIGHT</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_LIE_DOWN"><code class="name">var <span class="ident">ACTION_LIE_DOWN</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_MONNWALK"><code class="name">var <span class="ident">ACTION_MONNWALK</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_NOD"><code class="name">var <span class="ident">ACTION_NOD</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_PEE"><code class="name">var <span class="ident">ACTION_PEE</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_PUSH_UP"><code class="name">var <span class="ident">ACTION_PUSH_UP</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_SHAKE_HANDS"><code class="name">var <span class="ident">ACTION_SHAKE_HANDS</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_SHAKE_HEAD"><code class="name">var <span class="ident">ACTION_SHAKE_HEAD</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_SIT"><code class="name">var <span class="ident">ACTION_SIT</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_SPACEWALK"><code class="name">var <span class="ident">ACTION_SPACEWALK</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_STAND_2_LEGS"><code class="name">var <span class="ident">ACTION_STAND_2_LEGS</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_STAND_4_LEGS"><code class="name">var <span class="ident">ACTION_STAND_4_LEGS</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_STRETCH"><code class="name">var <span class="ident">ACTION_STRETCH</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_UP_STAIRS_2CM"><code class="name">var <span class="ident">ACTION_UP_STAIRS_2CM</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_UP_STAIRS_3_5CM"><code class="name">var <span class="ident">ACTION_UP_STAIRS_3_5CM</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_UP_STAIRS_3_5CM_0"><code class="name">var <span class="ident">ACTION_UP_STAIRS_3_5CM_0</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_UP_STAIRS_3_5CM_1"><code class="name">var <span class="ident">ACTION_UP_STAIRS_3_5CM_1</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.ACTION_WAVE"><code class="name">var <span class="ident">ACTION_WAVE</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.GAIL_AMBLE"><code class="name">var <span class="ident">GAIL_AMBLE</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.GAIL_TROT"><code class="name">var <span class="ident">GAIL_TROT</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.GAIL_WALK"><code class="name">var <span class="ident">GAIL_WALK</span></code></dt>
+<dd>
+<div class="desc"><p>The type of the None singleton.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="PuppyPi.PuppyPi.finish"><code class="name flex">
+<span>def <span class="ident">finish</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def finish(self) -&gt; None:
+    &#34;&#34;&#34;Finaliza la interaccion con el robot.&#34;&#34;&#34;
+    self.gait_pub.unsubscribe()
+    self.pose_pub.unsubscribe()
+    self.image_raw_pub.unsubscribe()
+    self.velocity_pub.unadvertise()
+    self.action_group_srv.unadvertise()
+    self.ros.terminate()</code></pre>
+</details>
+<div class="desc"><p>Finaliza la interaccion con el robot.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.imageRaw_start"><code class="name flex">
+<span>def <span class="ident">imageRaw_start</span></span>(<span>self, callback) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def imageRaw_start(self, callback) -&gt; None:
+    &#34;&#34;&#34;Inicia la captura de imagenes desde la camara del robot.
+
+    La funcion callback recibira un parametro (&#39;result&#39;)  del tipo diccionario
+
+    Args:
+        callback (function): funcion a ser invocada cada vez que se tenga una imagen de la camara.
+
+    Examples:
+        Ejemplo dentro del callback para opencv:
+
+            def callback(result):
+                h = result[&#34;height&#34;]
+                w = result[&#34;width&#34;]
+                enc = result[&#34;encoding&#34;]
+                img = result[&#34;data&#34;].encode(&#34;ascii&#34;)
+                img = base64.b64decode(img)
+                img = np.frombuffer(img, np.uint8)
+                img = img.reshape((h, w, 3))
+                img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+
+
+    &#34;&#34;&#34;
+    self.image_raw_pub.subscribe(callback)</code></pre>
+</details>
+<div class="desc"><p>Inicia la captura de imagenes desde la camara del robot.</p>
+<p>La funcion callback recibira un parametro ('result')
+del tipo diccionario</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>callback</code></strong> :&ensp;<code>function</code></dt>
+<dd>funcion a ser invocada cada vez que se tenga una imagen de la camara.</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<p>Ejemplo dentro del callback para opencv:</p>
+<pre><code>def callback(result):
+    h = result["height"]
+    w = result["width"]
+    enc = result["encoding"]
+    img = result["data"].encode("ascii")
+    img = base64.b64decode(img)
+    img = np.frombuffer(img, np.uint8)
+    img = img.reshape((h, w, 3))
+    img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+</code></pre></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.imageRaw_stop"><code class="name flex">
+<span>def <span class="ident">imageRaw_stop</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def imageRaw_stop(self) -&gt; None:
+    &#34;&#34;&#34;Finaliza la captura de imagenes desde la camara del robot.&#34;&#34;&#34;
+    self.image_raw_pub.unsubscribe()</code></pre>
+</details>
+<div class="desc"><p>Finaliza la captura de imagenes desde la camara del robot.</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.move"><code class="name flex">
+<span>def <span class="ident">move</span></span>(<span>self, x: float, yaw_rate: float, gait: str = 'Walk') ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def move(self, x: float, yaw_rate: float, gait: str = &#34;Walk&#34;) -&gt; None:
+    &#34;&#34;&#34;Inicia el desplazamiento del robot.
+
+    Args:
+        x (float): mueve el robot hacia atras o hacia adelante (-35 a +35 ¿mm/s?).
+        yaw_rate (float): mueve el robot hacia la izquierda o hacia la derecha (-50 a +50 grados/s).
+        gait (str, optional): la forma de andar del robot (default GAIL_WALK).
+    &#34;&#34;&#34;
+    # preparamos paranetros segun el modo de andar
+    if gait == PuppyPi.GAIL_TROT:
+        gait_config = {
+            &#34;overlap_time&#34;: 0.2,
+            &#34;swing_time&#34;: 0.3,
+            &#34;clearance_time&#34;: 0.0,
+            &#34;z_clearance&#34;: 5,
+        }
+        self.pose_params[&#34;x_shift&#34;] = -0.6
+    elif gait == PuppyPi.GAIL_AMBLE:
+        gait_config = {
+            &#34;overlap_time&#34;: 0.1,
+            &#34;swing_time&#34;: 0.2,
+            &#34;clearance_time&#34;: 0.1,
+            &#34;z_clearance&#34;: 5,
+        }
+        self.pose_params[&#34;x_shift&#34;] = -0.9
+    else:  # GAIL_WALK
+        gait_config = {
+            &#34;overlap_time&#34;: 0.1,
+            &#34;swing_time&#34;: 0.2,
+            &#34;clearance_time&#34;: 0.3,
+            &#34;z_clearance&#34;: 5,
+        }
+        self.pose_params[&#34;x_shift&#34;] = -0.65
+
+    # la postura
+    self.pose_pub.publish(roslibpy.Message(self.pose_params))
+
+    # la forma de andar
+    self.gait_pub.publish(roslibpy.Message(gait_config))
+
+    # lo ponemos en marcha
+    self.velocity_pub.publish(
+        roslibpy.Message({&#34;x&#34;: x, &#34;y&#34;: 0.0, &#34;yaw_rate&#34;: math.radians(-yaw_rate)})
+    )</code></pre>
+</details>
+<div class="desc"><p>Inicia el desplazamiento del robot.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>x</code></strong> :&ensp;<code>float</code></dt>
+<dd>mueve el robot hacia atras o hacia adelante (-35 a +35 ¿mm/s?).</dd>
+<dt><strong><code>yaw_rate</code></strong> :&ensp;<code>float</code></dt>
+<dd>mueve el robot hacia la izquierda o hacia la derecha (-50 a +50 grados/s).</dd>
+<dt><strong><code>gait</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>la forma de andar del robot (default GAIL_WALK).</dd>
+</dl></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.move_stop"><code class="name flex">
+<span>def <span class="ident">move_stop</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def move_stop(self) -&gt; None:
+    &#34;&#34;&#34;Detiene el desplazamiento del robot&#34;&#34;&#34;
+    self.velocity_pub.publish(
+        roslibpy.Message({&#34;x&#34;: 0.0, &#34;y&#34;: 0.0, &#34;yaw_rate&#34;: 0.0})
+    )</code></pre>
+</details>
+<div class="desc"><p>Detiene el desplazamiento del robot</p></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.runActionGroup"><code class="name flex">
+<span>def <span class="ident">runActionGroup</span></span>(<span>self, action: str, pause: float = 4.0) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def runActionGroup(self, action: str, pause: float = 4.0) -&gt; None:
+    &#34;&#34;&#34;Ejecuta una de las acciones predefinidas del robot.
+
+    Args:
+        action (str): la accion a ejecutar.
+        pause (float, optional): tiempo en segundos de pausa antes de retornar. Por defecto es 4.0s.
+    &#34;&#34;&#34;
+    request = roslibpy.ServiceRequest({&#34;name&#34;: action + &#34;.d6ac&#34;})
+    self.action_group_srv.call(request)
+
+    # no sabemos cuando el servicio ha finalizado su ejecucion
+    time.sleep(pause)</code></pre>
+</details>
+<div class="desc"><p>Ejecuta una de las acciones predefinidas del robot.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>action</code></strong> :&ensp;<code>str</code></dt>
+<dd>la accion a ejecutar.</dd>
+<dt><strong><code>pause</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>tiempo en segundos de pausa antes de retornar. Por defecto es 4.0s.</dd>
+</dl></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.setPose"><code class="name flex">
+<span>def <span class="ident">setPose</span></span>(<span>self, roll: float, pitch: float, height: float, run_time: float = 1.0) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setPose(
+    self, roll: float, pitch: float, height: float, run_time: float = 1.0
+) -&gt; None:
+    &#34;&#34;&#34;Establece una postura para el robot.
+
+    Args:
+        roll (float): -30 a 30 grados.
+        pitch (float): -30 a 30 grados.
+        height (float): altura de las patas del robot (50 a 150 mm).
+        run_time (float, optional): tiempo de ejecucion para alcanzar la postura. Por defecto en 1.0s.
+    &#34;&#34;&#34;
+    self.pose_params = {
+        &#34;roll&#34;: math.radians(roll),
+        &#34;pitch&#34;: math.radians(pitch),
+        &#34;yaw&#34;: 0.0,
+        &#34;height&#34;: -height / 10.0,
+        &#34;x_shift&#34;: 0.0,
+        &#34;stance_x&#34;: 0.0,
+        &#34;stance_y&#34;: 0.0,
+        &#34;run_time&#34;: int(run_time * 1000.0),  # debe ser integer
+    }
+    self.pose_pub.publish(roslibpy.Message(self.pose_params))
+    time.sleep(run_time + 0.2)</code></pre>
+</details>
+<div class="desc"><p>Establece una postura para el robot.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>roll</code></strong> :&ensp;<code>float</code></dt>
+<dd>-30 a 30 grados.</dd>
+<dt><strong><code>pitch</code></strong> :&ensp;<code>float</code></dt>
+<dd>-30 a 30 grados.</dd>
+<dt><strong><code>height</code></strong> :&ensp;<code>float</code></dt>
+<dd>altura de las patas del robot (50 a 150 mm).</dd>
+<dt><strong><code>run_time</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>tiempo de ejecucion para alcanzar la postura. Por defecto en 1.0s.</dd>
+</dl></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.setPoseLieDown"><code class="name flex">
+<span>def <span class="ident">setPoseLieDown</span></span>(<span>self, run_time: float = 1.0) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setPoseLieDown(self, run_time: float = 1.0) -&gt; None:
+    &#34;&#34;&#34;Establece la postura agachado para el robot.
+
+    Args:
+        run_time (float, optional): tiempo de ejecucion para alcanzar la postura. Por defecto en 1.0s.
+    &#34;&#34;&#34;
+    self.pose_params = {
+        &#34;roll&#34;: 0.00,
+        &#34;pitch&#34;: 0.00,
+        &#34;yaw&#34;: 0.00,
+        &#34;height&#34;: -5.0,
+        &#34;x_shift&#34;: 2.0,
+        &#34;stance_x&#34;: 0.0,
+        &#34;stance_y&#34;: 0.0,
+        &#34;run_time&#34;: int(run_time * 1000.0),  # debe ser integer
+    }
+    self.pose_pub.publish(roslibpy.Message(self.pose_params))
+    time.sleep(run_time + 0.2)</code></pre>
+</details>
+<div class="desc"><p>Establece la postura agachado para el robot.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>run_time</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>tiempo de ejecucion para alcanzar la postura. Por defecto en 1.0s.</dd>
+</dl></div>
+</dd>
+<dt id="PuppyPi.PuppyPi.setPoseStand"><code class="name flex">
+<span>def <span class="ident">setPoseStand</span></span>(<span>self, run_time: float = 1.0) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setPoseStand(self, run_time: float = 1.0) -&gt; None:
+    &#34;&#34;&#34;Establece la postura de pie para el robot.
+
+    Args:
+        run_time (float, optional): tiempo de ejecucion para alcanzar la postura. Por defecto en 1.0s.
+    &#34;&#34;&#34;
+    self.pose_params = {
+        &#34;roll&#34;: 0.00,
+        &#34;pitch&#34;: 0.00,
+        &#34;yaw&#34;: 0.00,
+        &#34;height&#34;: -10.0,
+        &#34;x_shift&#34;: -0.5,
+        &#34;stance_x&#34;: 0.0,
+        &#34;stance_y&#34;: 0.0,
+        &#34;run_time&#34;: int(run_time * 1000.0),  # debe ser integer
+    }
+    self.pose_pub.publish(roslibpy.Message(self.pose_params))
+    time.sleep(run_time + 0.2)</code></pre>
+</details>
+<div class="desc"><p>Establece la postura de pie para el robot.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>run_time</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>tiempo de ejecucion para alcanzar la postura. Por defecto en 1.0s.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="PuppyPi.PuppyPi" href="#PuppyPi.PuppyPi">PuppyPi</a></code></h4>
+<ul class="">
+<li><code><a title="PuppyPi.PuppyPi.ACTION_BOW" href="#PuppyPi.PuppyPi.ACTION_BOW">ACTION_BOW</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_BOXING" href="#PuppyPi.PuppyPi.ACTION_BOXING">ACTION_BOXING</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_BOXING_2" href="#PuppyPi.PuppyPi.ACTION_BOXING_2">ACTION_BOXING_2</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_JUMP" href="#PuppyPi.PuppyPi.ACTION_JUMP">ACTION_JUMP</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_KICK_BALL_LEFT" href="#PuppyPi.PuppyPi.ACTION_KICK_BALL_LEFT">ACTION_KICK_BALL_LEFT</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_KICK_BALL_RIGHT" href="#PuppyPi.PuppyPi.ACTION_KICK_BALL_RIGHT">ACTION_KICK_BALL_RIGHT</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_LIE_DOWN" href="#PuppyPi.PuppyPi.ACTION_LIE_DOWN">ACTION_LIE_DOWN</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_MONNWALK" href="#PuppyPi.PuppyPi.ACTION_MONNWALK">ACTION_MONNWALK</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_NOD" href="#PuppyPi.PuppyPi.ACTION_NOD">ACTION_NOD</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_PEE" href="#PuppyPi.PuppyPi.ACTION_PEE">ACTION_PEE</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_PUSH_UP" href="#PuppyPi.PuppyPi.ACTION_PUSH_UP">ACTION_PUSH_UP</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_SHAKE_HANDS" href="#PuppyPi.PuppyPi.ACTION_SHAKE_HANDS">ACTION_SHAKE_HANDS</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_SHAKE_HEAD" href="#PuppyPi.PuppyPi.ACTION_SHAKE_HEAD">ACTION_SHAKE_HEAD</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_SIT" href="#PuppyPi.PuppyPi.ACTION_SIT">ACTION_SIT</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_SPACEWALK" href="#PuppyPi.PuppyPi.ACTION_SPACEWALK">ACTION_SPACEWALK</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_STAND_2_LEGS" href="#PuppyPi.PuppyPi.ACTION_STAND_2_LEGS">ACTION_STAND_2_LEGS</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_STAND_4_LEGS" href="#PuppyPi.PuppyPi.ACTION_STAND_4_LEGS">ACTION_STAND_4_LEGS</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_STRETCH" href="#PuppyPi.PuppyPi.ACTION_STRETCH">ACTION_STRETCH</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_UP_STAIRS_2CM" href="#PuppyPi.PuppyPi.ACTION_UP_STAIRS_2CM">ACTION_UP_STAIRS_2CM</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_UP_STAIRS_3_5CM" href="#PuppyPi.PuppyPi.ACTION_UP_STAIRS_3_5CM">ACTION_UP_STAIRS_3_5CM</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_UP_STAIRS_3_5CM_0" href="#PuppyPi.PuppyPi.ACTION_UP_STAIRS_3_5CM_0">ACTION_UP_STAIRS_3_5CM_0</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_UP_STAIRS_3_5CM_1" href="#PuppyPi.PuppyPi.ACTION_UP_STAIRS_3_5CM_1">ACTION_UP_STAIRS_3_5CM_1</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.ACTION_WAVE" href="#PuppyPi.PuppyPi.ACTION_WAVE">ACTION_WAVE</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.GAIL_AMBLE" href="#PuppyPi.PuppyPi.GAIL_AMBLE">GAIL_AMBLE</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.GAIL_TROT" href="#PuppyPi.PuppyPi.GAIL_TROT">GAIL_TROT</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.GAIL_WALK" href="#PuppyPi.PuppyPi.GAIL_WALK">GAIL_WALK</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.finish" href="#PuppyPi.PuppyPi.finish">finish</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.imageRaw_start" href="#PuppyPi.PuppyPi.imageRaw_start">imageRaw_start</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.imageRaw_stop" href="#PuppyPi.PuppyPi.imageRaw_stop">imageRaw_stop</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.move" href="#PuppyPi.PuppyPi.move">move</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.move_stop" href="#PuppyPi.PuppyPi.move_stop">move_stop</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.runActionGroup" href="#PuppyPi.PuppyPi.runActionGroup">runActionGroup</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.setPose" href="#PuppyPi.PuppyPi.setPose">setPose</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.setPoseLieDown" href="#PuppyPi.PuppyPi.setPoseLieDown">setPoseLieDown</a></code></li>
+<li><code><a title="PuppyPi.PuppyPi.setPoseStand" href="#PuppyPi.PuppyPi.setPoseStand">setPoseStand</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>
