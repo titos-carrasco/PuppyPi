@@ -35,6 +35,9 @@ class PuppyPi:
     GAIL_AMBLE = "Amble"
     GAIL_WALK = "Walk"
 
+    # singleton
+    ros = None
+
     def __init__(self, ip: str):
         """Establece la conexion con el robot dado por la direccion IP.
 
@@ -42,8 +45,12 @@ class PuppyPi:
             ip (str): direccion IP del robot.
         """
         # nos conectamos
-        self.ros = roslibpy.Ros(host=ip, port=9090)
-        self.ros.run()
+        if PuppyPi.ros is None:
+            PuppyPi.ros = roslibpy.Ros(host=ip, port=9090)
+            PuppyPi.ros.run()
+        elif not PuppyPi.ros.is_connected:
+            PuppyPi.ros.connect()
+        self.ros = PuppyPi.ros
 
         # para las acciones predefinidas
         service = "/puppy_control/runActionGroup"
@@ -81,7 +88,7 @@ class PuppyPi:
         self.image_raw_pub.unsubscribe()
         self.velocity_pub.unadvertise()
         self.action_group_srv.unadvertise()
-        self.ros.terminate()
+        self.ros.close()
 
     def runActionGroup(self, action: str, pause: float = 4.0) -> None:
         """Ejecuta una de las acciones predefinidas del robot.
