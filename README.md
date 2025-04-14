@@ -2,6 +2,8 @@
 
 Acceso desde Python al robot cuadrúpedo PuppyPi de Hiwonder.
 
+![App](./images/AppPuppyPi.png)
+
 En lo posible trabajar en ambiente virtual (venv) e instalar los módulos roslibpy para la librería. En el caso de utilizar
 la imagen de la cámara instalar también opencv y numpy:
 
