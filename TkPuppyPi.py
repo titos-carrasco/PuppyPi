@@ -55,28 +55,28 @@ class App:
         self.scl_velocity = tk.Scale(
             self.win,
             orient=tk.HORIZONTAL,
-            from_=0,
+            from_=-35,
             to=35,
             bg="white",
             bd=0,
             highlightthickness=0,
             length=240,
         )
-        self.scl_velocity.set(10)
+        self.scl_velocity.set(0)
         self.scl_velocity.place(x=110, y=50)
 
         # para establecer la velocidad de giro
         self.scl_yaw_rate = tk.Scale(
             self.win,
             orient=tk.HORIZONTAL,
-            from_=0,
+            from_=-50,
             to=50,
             bg="white",
             bd=0,
             highlightthickness=0,
             length=240,
         )
-        self.scl_yaw_rate.set(25)
+        self.scl_yaw_rate.set(0)
         self.scl_yaw_rate.place(x=110, y=100)
 
         # para mostrar el estado de la conexion
@@ -99,6 +99,19 @@ class App:
         )
         self.cbb_gait.current(2)
         self.cbb_gait.place(x=300, y=160)
+
+        # boton para mover el robot
+        self.btn_move = tk.Button(
+            self.win,
+            text="Move",
+            width=8,
+            height=1,
+            font=("Arial", 10, "normal"),
+            relief="groove",
+        )
+        self.btn_move.place(x=168, y=284)
+        self.btn_move.bind("<ButtonPress-1>", self.doMove)
+        self.btn_move.bind("<ButtonRelease-1>", self.doStop)
 
         # para establecer los valores por defecto
         self.btn_reset = tk.Button(
@@ -210,7 +223,7 @@ class App:
         )
         self.btn_disconnect.place(x=694, y=468)
 
-        # un mensaje mientras interacuamos con el robot
+        # un mensaje mientras interactuamos con el robot
         self.lbl_working = tk.Label(
             self.win,
             text="Working ...",
@@ -234,10 +247,23 @@ class App:
             self.puppy.move_stop()
             self.puppy.finish()
 
+    # movemos el robot
+    def doMove(self, event):
+        if not self.puppy is None:
+            x = self.scl_velocity.get()
+            yaw = self.scl_yaw_rate.get()
+            gait = self.cbb_gait.get()
+            self.puppy.move(x, yaw, gait)
+
+    # detenemos el robot
+    def doStop(self, event):
+        if not self.puppy is None:
+            self.puppy.move_stop()
+
     # volvemos los parametros a su valor inicial
     def doReset(self):
-        self.scl_velocity.set(10)
-        self.scl_yaw_rate.set(25)
+        self.scl_velocity.set(0)
+        self.scl_yaw_rate.set(0)
         self.cbb_gait.current(2)
         self.scl_height.set(100)
         self.scl_pitch.set(0)
